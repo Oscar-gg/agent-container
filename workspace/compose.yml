@@ -1,0 +1,25 @@
+services:
+  gws:
+    build:
+      context: ./cli
+      dockerfile: Dockerfile
+    image: googleworkspace-cli
+    volumes:
+      # Persist gws config and credentials across runs
+      - gws-config:/config/gws
+      # Mount local working directory for file operations (uploads, downloads)
+      - ./working_dir:/workspace
+    environment:
+      # Optional: override with a credentials file path inside the container
+      # GOOGLE_WORKSPACE_CLI_CREDENTIALS_FILE: /config/gws/client_secret.json
+      #
+      # Optional: skip login by providing a pre-obtained access token
+      # GOOGLE_WORKSPACE_CLI_TOKEN: your_token_here
+      #
+      # Load from a .env file if present (gws picks it up automatically)
+      GOOGLE_WORKSPACE_CLI_CONFIG_DIR: /config/gws
+    stdin_open: true
+    tty: true
+
+volumes:
+  gws-config:
