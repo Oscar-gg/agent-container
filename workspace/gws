@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+TOKEN=$(node "$SCRIPT_DIR/cli/gws/get_token.mjs" 2>/dev/null)
+
+docker compose -f "$SCRIPT_DIR/compose.yml" run --rm \
+  -e GOOGLE_WORKSPACE_CLI_TOKEN="$TOKEN" \
+  gws "$@"

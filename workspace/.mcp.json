@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "github-personal": {
+      "command": "/workspace/mcp/github_mcp.sh",
+      "args": ["personal"]
+    },
+    "github-org": {
+      "command": "/workspace/mcp/github_mcp.sh",
+      "args": ["org"]
+    }
+  }
+}

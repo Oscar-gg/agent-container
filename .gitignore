@@ -1,2 +1,4 @@
 .env
+
+# Mounted volume to persist ~/.claude across container restarts
 claude/
