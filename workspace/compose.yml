@@ -21,5 +21,23 @@ services:
     stdin_open: true
     tty: true
 
+  pinchtab:
+    build:
+      context: ./mcp
+      dockerfile: Dockerfile
+    image: pinchtab-server
+    ports:
+      - "127.0.0.1:9867:9867"
+    restart: unless-stopped
+    environment:
+      - DISPLAY=${DISPLAY:-:99}
+    volumes:
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+      - pinchtab-data:/data
+    shm_size: 2gb
+    devices:
+      - /dev/dri:/dev/dri
+
 volumes:
   gws-config:
+  pinchtab-data:

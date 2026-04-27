@@ -7,6 +7,10 @@
     "github-org": {
       "command": "/workspace/mcp/github_mcp.sh",
       "args": ["org"]
+    },
+    "pinchtab": {
+      "command": "docker",
+      "args": ["exec", "-i", "workspace-pinchtab-1", "/usr/local/bin/pinchtab", "mcp", "--server", "http://localhost:9867"]
     }
   }
 }
