@@ -28,12 +28,17 @@ services:
     image: pinchtab-server
     ports:
       - "127.0.0.1:9867:9867"
-    restart: unless-stopped
+      - "127.0.0.1:6080:6080"
+      - "127.0.0.1:5901:5900"
     environment:
-      - DISPLAY=${DISPLAY:-:99}
+      - DISPLAY=:99
+      - PINCHTAB_CONFIG=/config/pinchtab_config.json
+    env_file:
+      - ../.env
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix:rw
       - pinchtab-data:/data
+      - ./mcp/pinchtab:/config/
+    user: root
     shm_size: 2gb
     devices:
       - /dev/dri:/dev/dri
