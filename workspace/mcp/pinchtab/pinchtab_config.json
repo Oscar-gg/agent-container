@@ -75,7 +75,7 @@
       ]
     },
     "idpi": {
-      "enabled": true,
+      "enabled": false,
       "strictMode": false,
       "scanContent": true,
       "wrapContent": false,
