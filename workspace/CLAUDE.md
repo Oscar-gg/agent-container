@@ -49,7 +49,9 @@ Tokens expire after 1 hour; the wrapper regenerates one on every invocation.
 
 ## MCP Servers
 
-The `mcp/` directory is reserved for custom MCP servers. Additionally, the following claude.ai MCP connectors are available in this environment and can be activated via `/mcp`:
+The `mcp/` directory holds custom MCP servers. See per-server setup docs:
+
+- **Microsoft To Do** — `mcp/microsoft-todo/SETUP.md` (Azure app registration + browser-auth token flow + Claude Code wiring). Additionally, the following claude.ai MCP connectors are available in this environment and can be activated via `/mcp`:
 
 - **claude.ai Gmail** — read and manage Gmail
 - **claude.ai Google Calendar** — manage calendars and events

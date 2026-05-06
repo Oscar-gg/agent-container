@@ -43,6 +43,21 @@ services:
     devices:
       - /dev/dri:/dev/dri
 
+  ms-todo-auth:
+    build:
+      context: ./mcp/microsoft-todo
+      dockerfile: auth.Dockerfile
+    image: ms-todo-auth
+    ports:
+      - "127.0.0.1:3000:3000"
+    env_file:
+      - ./working_dir/ms_todo.env
+    environment:
+      REDIRECT_URI: http://localhost:3000/callback
+    volumes:
+      - ./working_dir:/tokens
+    profiles: ["auth"]
+
 volumes:
   gws-config:
   pinchtab-data:
