@@ -20,6 +20,11 @@ set -a
 . "$ENV_FILE"
 set +a
 
+# Workaround for upstream bug in microsoft-todo-mcp-server v1.1.3: cli.js calls
+# `__require("fs").mkdirSync(...)` which throws under ESM. The branch is only
+# taken when the config dir is missing, so pre-creating it avoids the bug.
+mkdir -p "$HOME/.config/microsoft-todo-mcp"
+
 ACCESS_TOKEN="$(node -e "console.log(JSON.parse(require('fs').readFileSync('$TOKEN_FILE','utf8')).accessToken || JSON.parse(require('fs').readFileSync('$TOKEN_FILE','utf8')).access_token)")"
 REFRESH_TOKEN="$(node -e "console.log(JSON.parse(require('fs').readFileSync('$TOKEN_FILE','utf8')).refreshToken || JSON.parse(require('fs').readFileSync('$TOKEN_FILE','utf8')).refresh_token)")"
 
